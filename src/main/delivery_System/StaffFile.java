@@ -5,6 +5,8 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+
+
 public class StaffFile extends AbstractFile{
     final static String NAME = "Staff.txt";
 

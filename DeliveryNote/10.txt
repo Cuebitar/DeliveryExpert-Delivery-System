@@ -1,0 +1,32 @@
+          Delivery ID: 10
+
+  --- Client ---
+Client ID       : 1
+Client Name     : Lisa
+Client Phone No.: +6010-778 5641
+
+  --- Receiver ---
+Receiver Name     : rose
+Receiver Phone No.: 0111111111
+
+  --- Staff ---
+Staff ID       : 1
+Staff Name     : Shawn
+Staff Phone No.: +019-321 9911
+
+  --- Delivery ---
+Same day delivery     : Yes
+Deliver with insurance: Yes
+Pick Up Location      : 109 Jalan ss18/4
+Drop Off Location     : 109 USJ1
+Pick Up Date          : 12/04/2022
+
+  --- Items ---
+Item No | Weight (g) | Distance (km) | Charge (RM) | Item Type
+      1 |      20.00 |         10.00 |        3.00 |  Document
+
+
+Same Day Delivery:                      RM   10.00
+Deliver with Insurance:                 RM   15.00
+
+Total Charge:                           RM   28.00

@@ -6,10 +6,10 @@ import java.util.ArrayList;
 
 public class TransactionList { // controller class for Delivery class
 
-    public boolean searchDeliveryList(ArrayList<Delivery> deliveryList) {
+    public boolean searchDeliveryList(ArrayList<Delivery> deliveryList, String name) {
         // search delivery list by client's name and display the delivery details
         boolean found = false;
-        String name = KeyboardInput.askString("client's name");
+        
         for (Delivery delivery : deliveryList) {
             if (delivery.getClient().getName().toLowerCase().contains(name.toLowerCase())) {
                 delivery.printDeliveryDetails();
@@ -70,9 +70,9 @@ public class TransactionList { // controller class for Delivery class
         return newDelivery;
     }
 
-    public int cancelDelivery(ArrayList<Delivery> deliveryList) {
+    public int cancelDelivery(ArrayList<Delivery> deliveryList,String name) {
         // search delivery list and cancel the delivery from the delivery list
-        boolean found = searchDeliveryList(deliveryList);
+        boolean found = searchDeliveryList(deliveryList, name);
         if (found) {
             int deliveryID = KeyboardInput.askPositiveInt("the delivery ID to select");
             boolean confirm = KeyboardInput.askBoolean("Confirm cancellation");

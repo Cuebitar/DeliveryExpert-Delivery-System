@@ -9,6 +9,8 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+
+
 public class ClientFile extends AbstractFile {
     final static String NAME = "Client.txt";
 

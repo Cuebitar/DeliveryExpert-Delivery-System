@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class DeliveryApp {
     public static void main(String[] args) {
         int eventNo; // the action that user wants to perform
-        int startingEventNo = 0; // avoid magic number
+        int startingEventNo =0; // avoid magic number
         int closingEventNo = 5;
 
         TransactionList transactions = new TransactionList();
@@ -34,7 +34,8 @@ public class DeliveryApp {
             switch (eventNo) {
                 case 1:
                     // search delivery list by client's name and display the delivery details
-                    transactions.searchDeliveryList(deliveryList);
+                	String name = KeyboardInput.askString("client's name");
+                    transactions.searchDeliveryList(deliveryList, name);
                     break;
                 case 2:
                     // add a new delivery to list and print the delivery note (output text file)
@@ -47,7 +48,8 @@ public class DeliveryApp {
                     break;
                 case 3:
                     // search delivery list and cancel the delivery from the delivery list
-                    int toBeCancel = transactions.cancelDelivery(deliveryList);
+                	String name1 = KeyboardInput.askString("client's name");
+                    int toBeCancel = transactions.cancelDelivery(deliveryList, name1);
                     if (toBeCancel != 0) {
                         transactionFile.save(deliveryList);
                         transactionFile.deleteDeliveryNote(toBeCancel);
