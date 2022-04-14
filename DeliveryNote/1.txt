@@ -1,0 +1,33 @@
+          Delivery ID: 1
+
+  --- Client ---
+Client ID       : 1
+Client Name     : Lisa
+Client Phone No.: +6010-778 5641
+
+  --- Receiver ---
+Receiver Name     : Twice Mina
+Receiver Phone No.: 0123456789
+
+  --- Staff ---
+Staff ID       : 1
+Staff Name     : Shawn
+Staff Phone No.: +019-321 9911
+
+  --- Delivery ---
+Same day delivery     : Yes
+Deliver with insurance: Yes
+Pick Up Location      : No.29, Jalan Bayu Tinggi 1A/KS6, Taman Bayu Tinggi, 41200 Klang, Selangor
+Drop Off Location     : No 37, 39, 41&43, Jalan 4/96A, Taman Cheras Makmur, Cheras 56100 Kuala Lumpur
+Pick Up Date          : 02/02/2022
+
+  --- Items ---
+Item No | Weight (g) | Distance (km) | Charge (RM) | Item Type
+      1 |    1000.00 |         20.00 |        8.00 |    Parcel
+      2 |     300.00 |         20.00 |        5.00 |  Document
+
+
+Same Day Delivery:                      RM   10.00
+Deliver with Insurance:                 RM   15.00
+
+Total Charge:                           RM   38.00

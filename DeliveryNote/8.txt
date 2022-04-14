@@ -1,0 +1,32 @@
+          Delivery ID: 8
+
+  --- Client ---
+Client ID       : 4
+Client Name     : Jisoo
+Client Phone No.: +604-978 4435
+
+  --- Receiver ---
+Receiver Name     : Nurul Jaslina Jamaluddin
+Receiver Phone No.: +6015-164 3413
+
+  --- Staff ---
+Staff ID       : 4
+Staff Name     : Sun Shuai
+Staff Phone No.: +016-855 4933
+
+  --- Delivery ---
+Same day delivery     : No
+Deliver with insurance: Yes
+Pick Up Location      : 9, Jalan Lt. Adnan 4/6, Seksyen 9, 70137 Gemas, Negeri Sembilan
+Drop Off Location     : 6, Jalan Imbi 9M, SS9, 12631 Simpang Ampat, Pulau Pinang
+Pick Up Date          : 24/04/2022
+
+  --- Items ---
+Item No | Weight (g) | Distance (km) | Charge (RM) | Item Type
+      1 |    2500.00 |        500.00 |       35.00 |    Parcel
+      2 |    5000.00 |        500.00 |       50.00 |    Parcel
+
+
+Deliver with Insurance:                 RM   15.00
+
+Total Charge:                           RM  100.00

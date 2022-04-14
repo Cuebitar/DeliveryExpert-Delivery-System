@@ -1,0 +1,31 @@
+          Delivery ID: 3
+
+  --- Client ---
+Client ID       : 1
+Client Name     : Lisa
+Client Phone No.: +6010-778 5641
+
+  --- Receiver ---
+Receiver Name     : Trouble Maker
+Receiver Phone No.: 0122233455
+
+  --- Staff ---
+Staff ID       : 3
+Staff Name     : Olivia
+Staff Phone No.: +011-2642 6116
+
+  --- Delivery ---
+Same day delivery     : Yes
+Deliver with insurance: No
+Pick Up Location      : Tower 1, No.68, Jalan Pertama 1, Danga Utama Commercial Center, 81300 Skudai Johor Bahru
+Drop Off Location     : No.29, Jalan Bayu Tinggi 1A/KS6, Taman Bayu Tinggi, 41200 Klang, Selangor
+Pick Up Date          : 02/04/2022
+
+  --- Items ---
+Item No | Weight (g) | Distance (km) | Charge (RM) | Item Type
+      1 |    2000.00 |         30.00 |       18.00 |    Parcel
+
+
+Same Day Delivery:                      RM   10.00
+
+Total Charge:                           RM   28.00

@@ -1,0 +1,31 @@
+          Delivery ID: 7
+
+  --- Client ---
+Client ID       : 3
+Client Name     : Rose
+Client Phone No.: +606-828 3613
+
+  --- Receiver ---
+Receiver Name     : Arasu a/l Sasikumar
+Receiver Phone No.: +6083-93 5165
+
+  --- Staff ---
+Staff ID       : 2
+Staff Name     : Yang Chu Yan
+Staff Phone No.: +018-777 7409
+
+  --- Delivery ---
+Same day delivery     : No
+Deliver with insurance: No
+Pick Up Location      : 84, Jln 1/9, Bandar Bukit Bintang, 67486 Semenyih, Selangor
+Drop Off Location     : 54, Jln Tun Razak 6, PJU17, 39198 Sebertak, Pahang Darul Makmur
+Pick Up Date          : 23/04/2022
+
+  --- Items ---
+Item No | Weight (g) | Distance (km) | Charge (RM) | Item Type
+      1 |     500.00 |         25.00 |        5.00 |  Document
+      2 |     600.00 |         25.00 |        8.00 |    Parcel
+
+
+
+Total Charge:                           RM   13.00

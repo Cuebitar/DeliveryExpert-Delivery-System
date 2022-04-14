@@ -1,0 +1,30 @@
+          Delivery ID: 6
+
+  --- Client ---
+Client ID       : 1
+Client Name     : Lisa
+Client Phone No.: +6010-778 5641
+
+  --- Receiver ---
+Receiver Name     : Wang Yibo
+Receiver Phone No.: 0197894566
+
+  --- Staff ---
+Staff ID       : 2
+Staff Name     : Yang Chu Yan
+Staff Phone No.: +018-777 7409
+
+  --- Delivery ---
+Same day delivery     : No
+Deliver with insurance: No
+Pick Up Location      : No.29, Jalan Bayu Tinggi 1A/KS6, Taman Bayu Tinggi, 41200 Klang, Selangor
+Drop Off Location     : No 37, 39, 41&43, Jalan 4/96A, Taman Cheras Makmur, Cheras 56100 Kuala Lumpur
+Pick Up Date          : 03/05/2022
+
+  --- Items ---
+Item No | Weight (g) | Distance (km) | Charge (RM) | Item Type
+      1 |    4000.00 |         10.00 |       18.00 |  Document
+
+
+
+Total Charge:                           RM   18.00

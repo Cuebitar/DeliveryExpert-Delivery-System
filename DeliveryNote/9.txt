@@ -1,0 +1,33 @@
+          Delivery ID: 9
+
+  --- Client ---
+Client ID       : 6
+Client Name     : Eric
+Client Phone No.: +6010-526 7973
+
+  --- Receiver ---
+Receiver Name     : Santhara a/l Baltej
+Receiver Phone No.: +605-613 5284
+
+  --- Staff ---
+Staff ID       : 5
+Staff Name     : Teoh Yin Shui
+Staff Phone No.: +6015-428 7399
+
+  --- Delivery ---
+Same day delivery     : No
+Deliver with insurance: Yes
+Pick Up Location      : 3M-88, Jalan Kia Peng 40I, Bandar Utama, 63702 Sungai Lembing, Pahang Darul Makmur
+Drop Off Location     : 505, Lorong Kuala Kangsar, PJS49O, 10897 Balik Pulau, Pulau Pinang
+Pick Up Date          : 07/04/2022
+
+  --- Items ---
+Item No | Weight (g) | Distance (km) | Charge (RM) | Item Type
+      1 |    5700.00 |         35.00 |       60.00 |    Parcel
+      2 |     300.00 |         35.00 |        6.00 |  Document
+      3 |     460.00 |         35.00 |        6.00 |  Document
+
+
+Deliver with Insurance:                 RM   15.00
+
+Total Charge:                           RM   87.00
