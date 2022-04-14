@@ -1,7 +1,6 @@
 package delivery.app;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -87,7 +86,7 @@ public class TransactionFile extends AbstractFile {
 		return deliveryNote.toString();
 	}
 
-	public void save(ArrayList<Delivery> deliveryList) {
+	public void writeTransactionFile(ArrayList<Delivery> deliveryList) {
 		try {
 			fileWriter = new FileWriter(fileName, false);
 			printWriter = new PrintWriter(fileWriter, false);

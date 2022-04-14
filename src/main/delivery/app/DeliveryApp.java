@@ -15,17 +15,20 @@ public class DeliveryApp {
 		// read Transaction.txt to an ArrayList
 		ArrayList<Delivery> deliveryList = new ArrayList<>();
 		TransactionFile transactionFile = new TransactionFile();
-		transactionFile.retrieve(deliveryList);
+		transactionFile.retrieveFile();
+		transactionFile.readTransactionFile(deliveryList);
 
 		// read Client.txt to an ArrayList
 		ArrayList<Client> clientList = new ArrayList<>();
 		ClientFile clientFile = new ClientFile();
-		clientFile.retrieve(clientList);
+		clientFile.retrieveFile();
+		clientFile.readClientFile(clientList);
 
 		// read Staff.txt to an ArrayList
 		ArrayList<Staff> staffList = new ArrayList<>();
 		StaffFile staffFile = new StaffFile();
-		staffFile.retrieve(staffList);
+		staffFile.retrieveFile();
+		staffFile.readStaffFile(staffList);
 
 		// system main functions
 		do {
@@ -44,7 +47,7 @@ public class DeliveryApp {
 				// todo: what if they have the exact same name?
 				Delivery newDelivery = transactions.addDelivery(deliveryList);
 				if (!String.valueOf(newDelivery.getDeliveryID()).equals("0")) {
-					transactionFile.save(deliveryList);
+					transactionFile.writeTransactionFile(deliveryList);
 					transactionFile.deliveryNote(newDelivery);
 				}
 				break;
@@ -53,7 +56,7 @@ public class DeliveryApp {
             	String name1 = KeyboardInput.askString("client's name");
                 int toBeCancel = transactions.cancelDelivery(deliveryList, name1);
 				if (toBeCancel != 0) {
-					transactionFile.save(deliveryList);
+					transactionFile.writeTransactionFile(deliveryList);
 					transactionFile.deleteDeliveryNote(toBeCancel);
 				}
 				break;
@@ -64,7 +67,7 @@ public class DeliveryApp {
 			case 5:
 				// to add new client details to Client.txt
 				addNewClient(clientList);
-				clientFile.save(clientList);
+				clientFile.writeClientFile(clientList);
 				System.out.println("\nNew Client Added.");
 				break;
 			case 0:
