@@ -9,11 +9,11 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class TransactionFile extends AbstractFile {
-	
-	final static String NAME = "Transaction.txt";
+
+	final static String FILENAME = "Transaction.txt";
 
 	public TransactionFile() {
-		super(NAME);
+		super(FILENAME);
 	}
 
 	public void deliveryNote(Delivery aDelivery) {
@@ -105,43 +105,31 @@ public class TransactionFile extends AbstractFile {
 		}
 	}
 
-	public void retrieve(ArrayList<Delivery> deliveryList) {
-		try {
-			file = new File(fileName);
-			fileScanner = new Scanner(file);
-
-			while (fileScanner.hasNextLine()) {
-				String str = fileScanner.nextLine();
-				readTransactionFile(str, deliveryList);
-			}
-		} catch (FileNotFoundException e) {
-			System.out.print("Can't read file");
-		}
-	}
-
-	private void readTransactionFile(String str, ArrayList<Delivery> deliveryList) {
+	public void readTransactionFile(ArrayList<Delivery> deliveryList) {
 		String staffID, clientID, deliveryID, sameDayDelivery, withInsurance;
 		String receiverName, receiverTelNo, pickUpLocation, dropOffLocation, pickUpDate, itemList;
-		Scanner sc = new Scanner(str);
-		sc.useDelimiter(AbstractFile.getDELIMITER());
-
-		while (sc.hasNext()) {
-			deliveryID = sc.next();
-			clientID = sc.next();
-			receiverName = sc.next();
-			receiverTelNo = sc.next();
-			staffID = sc.next();
-			sameDayDelivery = sc.next();
-			withInsurance = sc.next();
-			pickUpLocation = sc.next();
-			dropOffLocation = sc.next();
-			pickUpDate = sc.next();
-			itemList = sc.next();
-			Delivery addTransaction = new Delivery(itemList, staffID, clientID, receiverName, receiverTelNo, deliveryID,
-					sameDayDelivery, withInsurance, pickUpLocation, dropOffLocation, pickUpDate);
-			deliveryList.add(addTransaction);
+		while (fileScanner.hasNextLine()) {
+			String line = fileScanner.nextLine();
+			Scanner sc = new Scanner(line);
+			sc.useDelimiter(AbstractFile.getDELIMITER());
+			while (sc.hasNext()) {
+				deliveryID = sc.next();
+				clientID = sc.next();
+				receiverName = sc.next();
+				receiverTelNo = sc.next();
+				staffID = sc.next();
+				sameDayDelivery = sc.next();
+				withInsurance = sc.next();
+				pickUpLocation = sc.next();
+				dropOffLocation = sc.next();
+				pickUpDate = sc.next();
+				itemList = sc.next();
+				Delivery addTransaction = new Delivery(itemList, staffID, clientID, receiverName, receiverTelNo,
+						deliveryID, sameDayDelivery, withInsurance, pickUpLocation, dropOffLocation, pickUpDate);
+				deliveryList.add(addTransaction);
+			}
+			sc.close();
 		}
-		sc.close();
 	}
-	
+
 }
