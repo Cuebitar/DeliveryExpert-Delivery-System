@@ -1,5 +1,6 @@
 package delivery.app;
 
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
@@ -14,20 +15,20 @@ public abstract class AbstractFile {
 	protected FileWriter fileWriter;
 	protected PrintWriter printWriter;
 
-	public AbstractFile(String fileName) {
-		this.fileName = fileName;
+	public AbstractFile() {
 	}
 
 	protected static String getDELIMITER() {
 		return ";";
 	}
 
-	protected void retrieveFile() {
+	protected void retrieveFile(String fileName) {
 		try {
+			this.fileName = fileName;
 			file = new File(fileName);
 			fileScanner = new Scanner(file);
 		} catch (FileNotFoundException e) {
-			System.out.print("Can't read file");
+			throw new IllegalArgumentException("File does not exist : " + fileName);
 		}
 	}
 

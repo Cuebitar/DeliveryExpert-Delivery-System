@@ -165,7 +165,6 @@ public class Delivery {
 		// read Staff.txt to an ArrayList
 		ArrayList<Staff> staffList = new ArrayList<>();
 		StaffFile staffFile = new StaffFile();
-		staffFile.retrieveFile();
 		staffFile.readStaffFile(staffList);
 
 		for (Staff value : staffList) {
@@ -181,7 +180,6 @@ public class Delivery {
 		// read Client.txt to an ArrayList
 		ArrayList<Client> clientList = new ArrayList<>();
 		ClientFile clientFile = new ClientFile();
-		clientFile.retrieveFile();
 		clientFile.readClientFile(clientList);
 
 		for (Client value : clientList) {

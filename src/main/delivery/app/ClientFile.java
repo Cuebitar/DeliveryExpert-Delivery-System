@@ -11,7 +11,7 @@ public class ClientFile extends AbstractFile {
 	final static String FILENAME = "Client.txt";
 
 	public ClientFile() {
-		super(FILENAME);
+		this.retrieveFile(FILENAME);
 	}
 
 	public void readClientFile(ArrayList<Client> clientList) {

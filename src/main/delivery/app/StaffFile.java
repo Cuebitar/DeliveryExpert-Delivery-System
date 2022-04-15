@@ -1,5 +1,6 @@
 package delivery.app;
 
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -8,7 +9,7 @@ public class StaffFile extends AbstractFile {
 	final static String FILENAME = "Staff.txt";
 
 	public StaffFile() {
-		super(FILENAME);
+		this.retrieveFile(FILENAME);
 	}
 
 	public void readStaffFile(ArrayList<Staff> staffList) {

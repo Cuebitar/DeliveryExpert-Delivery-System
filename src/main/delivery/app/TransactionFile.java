@@ -1,5 +1,6 @@
 package delivery.app;
 
+
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -12,7 +13,7 @@ public class TransactionFile extends AbstractFile {
 	final static String FILENAME = "Transaction.txt";
 
 	public TransactionFile() {
-		super(FILENAME);
+		this.retrieveFile(FILENAME);
 	}
 
 	public void deliveryNote(Delivery aDelivery) {
