@@ -44,8 +44,8 @@ public class AssignStaffTest {
 	// 1
 	@Test
 	@Parameters (method = "getParametersForTestAssignStaffValid")
-	public void testAssignStaffUsingStaffIdValid(String staffId, String staffName, String staffTelNo) {
-		Staff expectedStaff = new Staff(staffId, staffName, staffTelNo);
+	public void testAssignStaffUsingStaffIdValid(String staffId, String expectedStaffName, String expectedStaffTelNo) {
+		Staff expectedStaff = new Staff(staffId, expectedStaffName, expectedStaffTelNo);
 		setUpMockedKeyboardInput(staffId);
 		actualDelivery = sut.addDelivery(deliveryList);
 		assertTrue(actualDelivery.getStaff().equals(expectedStaff));
@@ -54,9 +54,9 @@ public class AssignStaffTest {
 	// 2
 	@Test
 	@Parameters (method = "getParametersForTestAssignStaffValid")
-	public void testAssignStaffUsingStaffNameValid(String staffId, String staffName, String staffTelNo) {
-		Staff expectedStaff = new Staff(staffId, staffName, staffTelNo);		
-		setUpMockedKeyboardInput(staffName);
+	public void testAssignStaffUsingStaffNameValid(String staffId, String expectedStaffName, String expectedStaffTelNo) {
+		Staff expectedStaff = new Staff(staffId, expectedStaffName, expectedStaffTelNo);		
+		setUpMockedKeyboardInput(expectedStaffName);
 		actualDelivery = sut.addDelivery(deliveryList);
 		assertTrue(actualDelivery.getStaff().equals(expectedStaff));
 	}
@@ -64,7 +64,7 @@ public class AssignStaffTest {
 	// 3
 	@Test
 	@Parameters
-	public void testAssignStaffInvalid(String invalidInput, Class expectedExceptionClass) {
+	public void testAssignStaffInvalid(String invalidInput) {
 		setUpMockedKeyboardInput(invalidInput);
 		actualDelivery = sut.addDelivery(deliveryList);
 		assertTrue(actualDelivery.getStaff() == null);
@@ -72,9 +72,9 @@ public class AssignStaffTest {
 	
 	// 4
 	@Test (expected = NullPointerException.class)
-	@Parameters
-	public void testAssignStaffInvalid2(String invalidInput) {
+	public void testAssignStaffInvalid2() {
 		setUpMockedKeyboardInput(null);
+		actualDelivery = sut.addDelivery(deliveryList);
 	}
 	
 	// ********************************* Integration Testing *****************************
@@ -93,7 +93,6 @@ public class AssignStaffTest {
 	
 	// 6
 	@Test
-	@Parameters
 	public void assignStaffIntegrationTestInvalid() {
 		// Gives invalid staff id or staff name to console
 		actualDelivery = sut.addDelivery(deliveryList);
@@ -114,10 +113,12 @@ public class AssignStaffTest {
 		return new Object[] {"0", "-1", "6", "", "abc"};
 	}
 	
+	// One test data is to verify for assigning staff using id
+	// Another is for assigning staff using name
 	public Object[] getParametersForAssignStaffIntegrationTest() {
 		return new Object[] {
-			new Object[] {"5", "Teoh Yin Shui", "+6015-428 7399"}, // Assign staff using name
-			new Object[] {"6", "Haanii a/l Kishor Ramasamy", "+6018-053 4527"} // Assign staff using id
+			new Object[] {"5", "Teoh Yin Shui", "+6015-428 7399"},
+			new Object[] {"6", "Haanii a/l Kishor Ramasamy", "+6018-053 4527"} 
 		};
 	}
 }

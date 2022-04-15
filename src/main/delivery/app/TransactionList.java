@@ -5,7 +5,6 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 public class TransactionList { // controller class for Delivery class
-
 	public boolean searchDeliveryList(ArrayList<Delivery> deliveryList, String name) {
 		// search delivery list by client's name and display the delivery details
 		boolean found = false;
