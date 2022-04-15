@@ -6,6 +6,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 public class TransactionFile extends AbstractFile {
@@ -108,27 +109,31 @@ public class TransactionFile extends AbstractFile {
 	public void readTransactionFile(ArrayList<Delivery> deliveryList) {
 		String staffID, clientID, deliveryID, sameDayDelivery, withInsurance;
 		String receiverName, receiverTelNo, pickUpLocation, dropOffLocation, pickUpDate, itemList;
-		while (fileScanner.hasNextLine()) {
-			String line = fileScanner.nextLine();
-			Scanner sc = new Scanner(line);
-			sc.useDelimiter(AbstractFile.getDELIMITER());
-			while (sc.hasNext()) {
-				deliveryID = sc.next();
-				clientID = sc.next();
-				receiverName = sc.next();
-				receiverTelNo = sc.next();
-				staffID = sc.next();
-				sameDayDelivery = sc.next();
-				withInsurance = sc.next();
-				pickUpLocation = sc.next();
-				dropOffLocation = sc.next();
-				pickUpDate = sc.next();
-				itemList = sc.next();
-				Delivery addTransaction = new Delivery(itemList, staffID, clientID, receiverName, receiverTelNo,
-						deliveryID, sameDayDelivery, withInsurance, pickUpLocation, dropOffLocation, pickUpDate);
-				deliveryList.add(addTransaction);
+		try{
+			while (fileScanner.hasNextLine()) {
+				String line = fileScanner.nextLine();
+				Scanner sc = new Scanner(line);
+				sc.useDelimiter(AbstractFile.getDELIMITER());
+				while (sc.hasNext()) {
+					deliveryID = sc.next();
+					clientID = sc.next();
+					receiverName = sc.next();
+					receiverTelNo = sc.next();
+					staffID = sc.next();
+					sameDayDelivery = sc.next();
+					withInsurance = sc.next();
+					pickUpLocation = sc.next();
+					dropOffLocation = sc.next();
+					pickUpDate = sc.next();
+					itemList = sc.next();
+					Delivery addTransaction = new Delivery(itemList, staffID, clientID, receiverName, receiverTelNo,
+							deliveryID, sameDayDelivery, withInsurance, pickUpLocation, dropOffLocation, pickUpDate);
+					deliveryList.add(addTransaction);
+				}
+				sc.close();
 			}
-			sc.close();
+		}catch (NoSuchElementException e){
+			System.out.println("No Such Element");
 		}
 	}
 
