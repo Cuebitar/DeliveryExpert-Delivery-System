@@ -10,25 +10,24 @@ public class DeliveryApp {
 		int startingEventNo = 0; // avoid magic number
 		int closingEventNo = 5;
 
+		ArrayList<Client> clients = new ArrayList<>();
+		ArrayList<Staff> staff = new ArrayList<>();
+		ArrayList<Delivery> deliveries = new ArrayList<>();
+
+		// The controller
 		TransactionList transactions = new TransactionList();
 
 		// read Transaction.txt to an ArrayList
 		ArrayList<Delivery> deliveryList = new ArrayList<>();
 		TransactionFile transactionFile = new TransactionFile();
-		transactionFile.retrieveFile("Transaction.txt");
-		transactionFile.readTransactionFile(deliveryList);
+		transactionFile.readFromFile("Transaction.txt");
+		deliveryList = transactionFile.getDeliveryList();
 
 		// read Client.txt to an ArrayList
 		ArrayList<Client> clientList = new ArrayList<>();
 		ClientFile clientFile = new ClientFile();
-		clientFile.retrieveFile("Client.txt");
-		clientFile.readClientFile(clientList);
-
-		// read Staff.txt to an ArrayList
-		ArrayList<Staff> staffList = new ArrayList<>();
-		StaffFile staffFile = new StaffFile();
-		staffFile.retrieveFile("Staff.txt");
-		staffFile.readStaffFile(staffList);
+		clientFile.readFromFile("Client.txt");
+		clientList = clientFile.getClientList();
 
 		// system main functions
 		do {
@@ -40,14 +39,14 @@ public class DeliveryApp {
 			case 1:
 				// search delivery list by client's name and display the delivery details
 				String name = KeyboardInput.getInstance().askString("client's name");
-				transactions.searchDeliveryList(deliveryList, name);
+				transactions.searchDeliveryList(name);
 				break;
 			case 2:
 				// add a new delivery to list and print the delivery note (output text file)
 				// todo: what if they have the exact same name?
 				Delivery newDelivery = transactions.addDelivery(deliveryList);
 				if (!String.valueOf(newDelivery.getDeliveryID()).equals("0")) {
-					transactionFile.writeTransactionFile(deliveryList);
+					transactionFile.writeToFile("Transaction.txt");
 					transactionFile.deliveryNote(newDelivery);
 				}
 				break;
@@ -56,7 +55,7 @@ public class DeliveryApp {
             	String name1 = KeyboardInput.getInstance().askString("client's name");
                 int toBeCancel = transactions.cancelDelivery(deliveryList, name1);
 				if (toBeCancel != 0) {
-					transactionFile.writeTransactionFile(deliveryList);
+					transactionFile.writeToFile("Transaction.txt");
 					transactionFile.deleteDeliveryNote(toBeCancel);
 				}
 				break;
@@ -67,7 +66,7 @@ public class DeliveryApp {
 			case 5:
 				// to add new client details to Client.txt
 				addNewClient(clientList);
-				clientFile.writeClientFile(clientList);
+				clientFile.writeToFile("Client.txt");
 				System.out.println("\nNew Client Added.");
 				break;
 			case 0:

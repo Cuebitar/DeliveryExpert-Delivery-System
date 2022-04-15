@@ -5,8 +5,11 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 public class TransactionList { // controller class for Delivery class
-	public boolean searchDeliveryList(ArrayList<Delivery> deliveryList, String name) {
+	public boolean searchDeliveryList(String name) {
 		// search delivery list by client's name and display the delivery details
+		TransactionFile transactionFile = new TransactionFile();
+		transactionFile.readFromFile("Transaction.txt");
+		ArrayList<Delivery> deliveryList = transactionFile.getDeliveryList();
 		boolean found = false;
 		for (Delivery delivery : deliveryList) {
 			if (delivery.getClient().getName().toLowerCase().contains(name.toLowerCase())) {
@@ -71,7 +74,7 @@ public class TransactionList { // controller class for Delivery class
 
 	public int cancelDelivery(ArrayList<Delivery> deliveryList, String name) {
 		// search delivery list and cancel the delivery from the delivery list
-		boolean found = searchDeliveryList(deliveryList, name);
+		boolean found = searchDeliveryList(name);
 		if (found) {
 			int deliveryID = KeyboardInput.getInstance().askPositiveInt("the delivery ID to select");
 			boolean confirm = KeyboardInput.getInstance().askBoolean("Confirm cancellation");

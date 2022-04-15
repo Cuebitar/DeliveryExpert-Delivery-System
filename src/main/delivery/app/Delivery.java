@@ -165,7 +165,8 @@ public class Delivery {
 		// read Staff.txt to an ArrayList
 		ArrayList<Staff> staffList = new ArrayList<>();
 		StaffFile staffFile = new StaffFile();
-		staffFile.readStaffFile(staffList);
+		staffFile.readFromFile("Staff.txt");
+		staffList = staffFile.getStaffList();
 
 		for (Staff value : staffList) {
 			if (value.getId().equals(info) || value.getName().toLowerCase().contains(info.toLowerCase())) {
@@ -180,7 +181,8 @@ public class Delivery {
 		// read Client.txt to an ArrayList
 		ArrayList<Client> clientList = new ArrayList<>();
 		ClientFile clientFile = new ClientFile();
-		clientFile.readClientFile(clientList);
+		clientFile.readFromFile("Client.txt");
+		clientList = clientFile.getClientList();
 
 		for (Client value : clientList) {
 			if (value.getId().equals(info) || value.getName().toLowerCase().contains(info.toLowerCase())) {
