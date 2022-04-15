@@ -4,6 +4,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 public class ClientFile extends AbstractFile {
@@ -15,19 +16,24 @@ public class ClientFile extends AbstractFile {
 
 	public void readClientFile(ArrayList<Client> clientList) {
 		String id, name, telNo;
-		while (fileScanner.hasNextLine()) {
-			String line = fileScanner.nextLine();
-			Scanner sc = new Scanner(line);
-			sc.useDelimiter(AbstractFile.getDELIMITER());
-			while (sc.hasNext()) {
-				id = sc.next();
-				name = sc.next();
-				telNo = sc.next();
-				Client addClient = new Client(id, name, telNo);
-				clientList.add(addClient);
+		try{
+			while (fileScanner.hasNextLine()) {
+				String line = fileScanner.nextLine();
+				Scanner sc = new Scanner(line);
+				sc.useDelimiter(AbstractFile.getDELIMITER());
+				while (sc.hasNext()) {
+					id = sc.next();
+					name = sc.next();
+					telNo = sc.next();
+					Client addClient = new Client(id, name, telNo);
+					clientList.add(addClient);
+				}
+				sc.close();
 			}
-			sc.close();
+		}catch (NoSuchElementException e){
+			System.out.println("No Such Element");
 		}
+
 	}
 
 	public void writeClientFile(ArrayList<Client> clientList) {
