@@ -78,10 +78,10 @@ public class AssignStaffTest {
 	}
 	
 	// ********************************* Integration Testing *****************************
-	
+	/*
 	// 5
 	@Test
-	@Parameters (method = "getParametersForAssignStaffIntegrationTest")
+	@Parameters (method = "getParametersForTestAssignStaffValid")
 	public void assignStaffIntegrationTestValid(String staffId, String staffName, String staffTelNo) {
 		Staff expectedStaff = new Staff(staffId, staffName, staffTelNo);
 		
@@ -98,7 +98,7 @@ public class AssignStaffTest {
 		actualDelivery = sut.addDelivery(deliveryList);
 		assertTrue(actualDelivery.getStaff() == null);
 	}
-	
+	*/
 	// ******************************** Test Data ***************************************
 	
 	// To check if the system assigns the staff according to the user input 
@@ -111,14 +111,5 @@ public class AssignStaffTest {
 	
 	public Object[] parametersForTestAssignStaffInvalid() {
 		return new Object[] {"0", "-1", "6", "", "abc"};
-	}
-	
-	// One test data is to verify for assigning staff using id
-	// Another is for assigning staff using name
-	public Object[] getParametersForAssignStaffIntegrationTest() {
-		return new Object[] {
-			new Object[] {"5", "Teoh Yin Shui", "+6015-428 7399"},
-			new Object[] {"6", "Haanii a/l Kishor Ramasamy", "+6018-053 4527"} 
-		};
 	}
 }
