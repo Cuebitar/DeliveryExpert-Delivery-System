@@ -27,5 +27,7 @@ public abstract class AbstractFile {
 
     public abstract void writeToFile(String fileName);
 
-
+    public String getFileName() {
+        return fileName;
+    }
 }
