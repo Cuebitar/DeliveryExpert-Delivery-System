@@ -51,7 +51,6 @@ public class AssignStaffTest {
 		Staff expectedStaff = new Staff(staffId, expectedStaffName, expectedStaffTelNo);
 		sut = new TransactionList(getMockedKeyboardInput(staffId));
 		actualDelivery = sut.addDelivery(deliveryList);
-		System.out.println(actualDelivery.getStaff().getName());
 		assertTrue(actualDelivery.getStaff().equals(expectedStaff));
 	}
 	

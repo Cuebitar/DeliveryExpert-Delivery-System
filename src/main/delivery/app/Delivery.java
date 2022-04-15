@@ -187,6 +187,9 @@ public class Delivery {
 		clientFile.readFromFile("Client.txt");
 		clientList = clientFile.getClientList();
 
+		if (info.isBlank())
+			return new Client();
+		
 		for (Client value : clientList) {
 			if (value.getId().equals(info) || value.getName().toLowerCase().contains(info.toLowerCase())) {
 				return value;
