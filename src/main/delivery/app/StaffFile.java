@@ -41,7 +41,6 @@ public class StaffFile extends AbstractFile {
             }
             sc.close();
         }
-        System.out.println(staffList.size());
     }
 
     @Override

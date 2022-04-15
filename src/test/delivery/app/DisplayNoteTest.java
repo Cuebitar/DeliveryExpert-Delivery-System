@@ -15,29 +15,43 @@ import junitparams.Parameters;
 @RunWith(JUnitParamsRunner.class)
 public class DisplayNoteTest {
 
-	private ArrayList<Delivery> deliveryTestList = new ArrayList<Delivery>();
-	private ArrayList<Client> clientTestList = new ArrayList<Client>();
-
-	@Before
-	public void setupBeforeTest() {
-		ClientFile clientFile = new ClientFile();
-		TransactionFile readFile = new TransactionFile();
-		clientFile.readClientFile(clientTestList);
-		readFile.readTransactionFile(deliveryTestList);
-	}
-
 	@Test
 	@Parameters({ "Lisa" })
 	public void SearchDeliveryListValidTest(String inputData) {
 		TransactionList tList = new TransactionList();
-		assertTrue(tList.searchDeliveryList(deliveryTestList, inputData));
+		assertTrue(tList.searchDeliveryList(inputData));
 	}
 
 	@Test
 	@Parameters({ "Esther", "Rose" })
 	public void SearchDeliveryListInvalidTest(String inputData) {
 		TransactionList tList = new TransactionList();
-		assertFalse(tList.searchDeliveryList(deliveryTestList, inputData));
+		assertFalse(tList.searchDeliveryList(inputData));
 	}
+
+//	private ArrayList<Delivery> deliveryTestList = new ArrayList<Delivery>();
+//	private ArrayList<Client> clientTestList = new ArrayList<Client>();
+//
+//	@Before
+//	public void setupBeforeTest() {
+//		ClientFile clientFile = new ClientFile();
+//		TransactionFile readFile = new TransactionFile();
+//		clientFile.readClientFile(clientTestList);
+//		readFile.readTransactionFile(deliveryTestList);
+//	}
+//
+//	@Test
+//	@Parameters({ "Lisa" })
+//	public void SearchDeliveryListValidTest(String inputData) {
+//		TransactionList tList = new TransactionList();
+//		assertTrue(tList.searchDeliveryList(deliveryTestList, inputData));
+//	}
+//
+//	@Test
+//	@Parameters({ "Esther", "Rose" })
+//	public void SearchDeliveryListInvalidTest(String inputData) {
+//		TransactionList tList = new TransactionList();
+//		assertFalse(tList.searchDeliveryList(deliveryTestList, inputData));
+//	}
 
 }

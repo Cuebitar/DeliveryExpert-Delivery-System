@@ -31,14 +31,14 @@ public class AddClientTest {
 	@Parameters()
 	public void testRetrieveFileValidValues(String filename) {
 		AbstractFile af = new ClientFile();
-		af.retrieveFile(filename);
-		assertEquals(filename, af.getFilename());
+		af.readFromFile(filename);
+		assertEquals(filename, af.getFileName());
 	}
 
 	private Object[] parametersForTestRetrieveFileInvalidValues() {
 		return new Object[] { 
 				new Object[] { ".txt" }, 
-				new Object[] { "" }, 
+				new Object[] { "" },
 				new Object[] { null }, 
 		};
 	}
@@ -47,7 +47,7 @@ public class AddClientTest {
 	@Parameters()
 	public void testRetrieveFileInvalidValues(String filename) {
 		AbstractFile af = new ClientFile();
-		af.retrieveFile(filename);
+		af.readFromFile(filename);
 	}
 	
 }

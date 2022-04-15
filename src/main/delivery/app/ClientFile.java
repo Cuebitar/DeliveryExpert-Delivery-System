@@ -39,7 +39,6 @@ public class ClientFile extends AbstractFile {
             }
             sc.close();
         }
-        System.out.println(clientList.size());
     }
 
     @Override
