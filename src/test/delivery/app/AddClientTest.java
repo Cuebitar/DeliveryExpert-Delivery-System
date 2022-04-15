@@ -15,16 +15,9 @@ import org.junit.runner.RunWith;
 
 @RunWith(JUnitParamsRunner.class)
 public class AddClientTest {
-
+	
 	private Object[] parametersForTestRetrieveFileValidValues() {
-		return new Object[] { 
-				new Object[] { "Client.txt" }, 
-				new Object[] { "client.txt" },
-				new Object[] { "Transaction.txt" }, 
-				new Object[] { "transaction.txt" }, 
-				new Object[] { "Staff.txt" },
-				new Object[] { "staff.txt" }, 
-		};
+		return new Object[] { "Client.txt" };
 	}
 
 	@Test()
@@ -36,11 +29,16 @@ public class AddClientTest {
 	}
 
 	private Object[] parametersForTestRetrieveFileInvalidValues() {
-		return new Object[] { 
-				new Object[] { ".txt" }, 
-				new Object[] { "" }
-		};
-	}
+		   return new Object[] {
+		         new Object[] { "client.txt" },
+		         new Object[] { "delivery.txt" },
+		         new Object[] { "transaction.txt" },
+		         new Object[] { "staff.txt" },
+		         new Object[] { ".txt" }, 
+		         new Object[] { "" },
+		   };
+		}
+
 
 	@Test(expected = IllegalArgumentException.class)
 	@Parameters()
