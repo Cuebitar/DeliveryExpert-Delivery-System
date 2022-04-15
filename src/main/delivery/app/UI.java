@@ -3,9 +3,6 @@ package delivery.app;
 import java.util.Scanner;
 
 public class UI {
-	
-	private static final Scanner scanner = new Scanner(System.in);
-
 	// display the program name
 	public static void displayHeading(String heading) {
 		System.out.printf("%n%n");

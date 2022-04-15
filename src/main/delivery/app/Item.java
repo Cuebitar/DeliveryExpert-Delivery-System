@@ -1,4 +1,4 @@
-package domain;
+package delivery.app;
 
 public abstract class Item {
 

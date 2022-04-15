@@ -5,14 +5,19 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.Scanner;
 
-import dataAccess.AbstractFile;
-
 public class KeyboardInput {
 	
 	private static final Scanner sn = new Scanner(System.in);
 	private static final String stringError = "Sorry, cannot contain \"" + AbstractFile.getDELIMITER() + "\".";
-
-	public static String askString(String info) {
+	private static final KeyboardInput instance = new KeyboardInput();
+	
+	private KeyboardInput() {}
+	
+	public KeyboardInput getInstance() {
+		return instance;
+	}
+	
+	public String askString(String info) {
 		String input;
 
 		while (true) {
@@ -29,7 +34,7 @@ public class KeyboardInput {
 		return input;
 	}
 
-	public static double askPositiveDouble(String info) {
+	public double askPositiveDouble(String info) {
 		double input;
 		String errorMessage = "\nPlease enter a positive number.";
 
@@ -48,7 +53,7 @@ public class KeyboardInput {
 		}
 	}
 
-	public static int askPositiveInt(String info) {
+	public int askPositiveInt(String info) {
 		int input;
 		String errorMessage = "Please enter a positive integer.";
 
@@ -67,7 +72,7 @@ public class KeyboardInput {
 		}
 	}
 
-	public static boolean askBoolean(String info) {
+	public boolean askBoolean(String info) {
 		String ans;
 		while (true) {
 			System.out.printf("%n%n%s%s", info, " (y/n)? ");
@@ -83,7 +88,7 @@ public class KeyboardInput {
 		} // end of while
 	}
 
-	public static LocalDate askDate(String dateName) {
+	public LocalDate askDate(String dateName) {
 		String stringDate;
 		LocalDate date;
 

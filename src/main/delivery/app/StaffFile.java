@@ -1,10 +1,8 @@
-package dataAccess;
+package delivery.app;
 
 
 import java.util.ArrayList;
 import java.util.Scanner;
-
-import domain.Staff;
 
 public class StaffFile extends AbstractFile {
 

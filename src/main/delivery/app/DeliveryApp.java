@@ -2,16 +2,6 @@ package delivery.app;
 
 import java.util.ArrayList;
 
-import dataAccess.ClientFile;
-import dataAccess.StaffFile;
-import dataAccess.TransactionFile;
-import domain.Client;
-import domain.Delivery;
-import domain.Document;
-import domain.Item;
-import domain.Parcel;
-import domain.Staff;
-
 public class DeliveryApp {
 
 	public static void main(String[] args) {

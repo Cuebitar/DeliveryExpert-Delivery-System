@@ -4,10 +4,6 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
-import domain.Client;
-import domain.Delivery;
-import domain.Staff;
-
 public class TransactionList { // controller class for Delivery class
 
 	public boolean searchDeliveryList(ArrayList<Delivery> deliveryList, String name) {

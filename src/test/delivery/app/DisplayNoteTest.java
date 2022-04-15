@@ -9,10 +9,6 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import dataAccess.ClientFile;
-import dataAccess.TransactionFile;
-import domain.Client;
-import domain.Delivery;
 import junitparams.JUnitParamsRunner;
 import junitparams.Parameters;
 

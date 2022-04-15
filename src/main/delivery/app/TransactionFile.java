@@ -1,4 +1,4 @@
-package dataAccess;
+package delivery.app;
 
 
 import java.io.File;
@@ -7,8 +7,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
-
-import domain.Delivery;
 
 public class TransactionFile extends AbstractFile {
 

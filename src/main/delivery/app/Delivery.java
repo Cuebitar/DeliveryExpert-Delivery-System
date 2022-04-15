@@ -1,4 +1,4 @@
-package domain;
+package delivery.app;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;

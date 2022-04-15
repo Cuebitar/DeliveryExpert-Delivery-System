@@ -1,4 +1,4 @@
-package domain;
+package delivery.app;
 
 public class Staff extends Person {
 
@@ -20,5 +20,4 @@ public class Staff extends Person {
 	public String toString() {
 		return String.format("%s;%s;%s", getId(), getName(), getTelNo());
 	}
-
 }
