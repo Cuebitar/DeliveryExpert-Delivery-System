@@ -10,30 +10,37 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-
 import junitparams.JUnitParamsRunner;
 import junitparams.Parameters;
-
 import java.time.LocalDate;
 import java.util.ArrayList;
-
 
 @RunWith(JUnitParamsRunner.class)
 public class AssignStaffTest {
 	TransactionList sut;
 	static ArrayList<Delivery> deliveryList;
-	Staff expectedStaff;
 	Delivery actualDelivery;
-	KeyboardInput mockKeyboardInput;
-	
-	@BeforeClass
-	public static void setUpClass() {
-		deliveryList = new ArrayList<Delivery>();
-	}
-	
+
 	@Before
 	public void setUp() {
+		deliveryList = new ArrayList<Delivery>();
 		sut = new TransactionList();
+	}
+	
+	public void setUpMockedKeyboardInput(String staffNameOrId) {
+		KeyboardInput mockedKeyboardInput = mock(KeyboardInput.class);
+		
+		when(mockedKeyboardInput.askString("client's name or ID")).thenReturn("1");
+		when(mockedKeyboardInput.askString("staff name or ID")).thenReturn(staffNameOrId);
+		when(mockedKeyboardInput.askString("receiver name")).thenReturn("abc");
+		when(mockedKeyboardInput.askString("receiver phone no.")).thenReturn("123");
+		when(mockedKeyboardInput.askString("pick up location")).thenReturn("asd");
+		when(mockedKeyboardInput.askString("drop off location")).thenReturn("aer");
+		when(mockedKeyboardInput.askDate("pick up date")).thenReturn(LocalDate.now());
+		when(mockedKeyboardInput.askBoolean("Same day delivery")).thenReturn(false);
+		when(mockedKeyboardInput.askBoolean("Deliver with insurance")).thenReturn(false);
+		when(mockedKeyboardInput.askPositiveDouble("distance in km")).thenReturn(1.0);
+		when(mockedKeyboardInput.askPositiveInt("number of items")).thenReturn(0);
 	}
 	
 	// ******************* *********** Unit Testing *************************************
@@ -42,50 +49,8 @@ public class AssignStaffTest {
 	@Test
 	@Parameters (method = "getParametersForTestAssignStaffValid")
 	public void testAssignStaffUsingStaffIdValid(String staffId, String staffName, String staffTelNo) {
-		
-		expectedStaff = new Staff(staffId, staffName, staffTelNo);
-		
-		mockKeyboardInput = mock(KeyboardInput.class);
-		when(mockKeyboardInput.getSalesAgentPosition(anyString())).thenReturn(currentPosition);
-		when(mockKeyboardInput.getSalesAmount(anyString())).thenReturn(salesAmount);
-		
-		String clientName = KeyboardInput.getInstance().askString("client's name or ID");
-		Client client = Delivery.findClient(clientName);
-		if (client.getName() == null) {
-			System.out.println("No such client.");
-			return new Delivery();
-		}
-		String staffName = KeyboardInput.getInstance().askString("staff name or ID");
-		Staff staff = Delivery.findStaff(staffName);
-		if (staff.getName() == null) {
-			System.out.println("No such staff.");
-			return new Delivery();
-		}
-		String receiverName = KeyboardInput.getInstance().askString("receiver name");
-		String receiverTelNo = KeyboardInput.getInstance().askString("receiver phone no.");
-		String pickUpLocation = KeyboardInput.getInstance().askString("pick up location");
-		String dropOffLocation = KeyboardInput.getInstance().askString("drop off location");
-		LocalDate date = KeyboardInput.getInstance().askDate("pick up date");
-		boolean sameDayDelivery = KeyboardInput.getInstance().askBoolean("Same day delivery");
-		boolean withInsurance = KeyboardInput.getInstance().askBoolean("Deliver with insurance");
-		int deliveryID = deliveryList.get(deliveryList.size() - 1).getDeliveryID() + 1;
-
-		StringBuilder sb = new StringBuilder();
-		StringBuilder str = new StringBuilder();
-		String str1;
-		double distance = KeyboardInput.getInstance().askPositiveDouble("distance in km");
-		int numberOfItems = KeyboardInput.getInstance().askPositiveInt("number of items");
-		for (int i = 0; i < numberOfItems; i++) {
-			System.out.printf("\n\n-- Item %o --\n ", (i + 1));
-			double weight = KeyboardInput.getInstance().askPositiveDouble("weight in grams");
-			boolean document = KeyboardInput.getInstance().askBoolean("Item type: Document");
-		
-		
-		
-		
-		
-		
-		
+		Staff expectedStaff = new Staff(staffId, staffName, staffTelNo);
+		setUpMockedKeyboardInput(staffId);
 		actualDelivery = sut.addDelivery(deliveryList);
 		
 		assertTrue(actualDelivery.getStaff().equals(expectedStaff));
@@ -95,11 +60,8 @@ public class AssignStaffTest {
 	@Test
 	@Parameters (method = "getParametersForTestAssignStaffValid")
 	public void testAssignStaffUsingStaffNameValid(String staffId, String staffName, String staffTelNo) {
-		expectedStaff = new Staff(staffId, staffName, staffTelNo);
-		
-		mockKeyboardInput = mock(KeyboardInput.class);
-		
-		
+		Staff expectedStaff = new Staff(staffId, staffName, staffTelNo);		
+		setUpMockedKeyboardInput(staffName);
 		actualDelivery = sut.addDelivery(deliveryList);
 		
 		assertTrue(actualDelivery.getStaff().equals(expectedStaff));
@@ -109,26 +71,16 @@ public class AssignStaffTest {
 	@Test
 	@Parameters
 	public void testAssignStaffInvalid(String invalidInput, Class expectedExceptionClass) {
+		setUpMockedKeyboardInput(invalidInput);
 		actualDelivery = sut.addDelivery(deliveryList);
-		// for invalid, staff == null
 		assertTrue(actualDelivery.getStaff() == null);
 	}
 	
 	// 4
-	// Test for multiple thrown exceptions in one test
-	@Test
+	@Test (expected = NullPointerException.class)
 	@Parameters
-	public void testAssignStaffInvalid2(String invalidInput, Class expectedExceptionClass) {
-		actualDelivery = sut.addDelivery(deliveryList);
-		// for invalid, staff == null
-		assertTrue(actualDelivery.getStaff() == null);
-		
-		try {
-	        // exception throwing code
-	    } catch (Exception e) {
-            if (e.getClass() != expectedExceptionClass)
-            	Assert.fail();
-	    }
+	public void testAssignStaffInvalid2(String invalidInput) {
+		setUpMockedKeyboardInput(null);
 	}
 	
 	// ********************************* Integration Testing *****************************
@@ -137,10 +89,11 @@ public class AssignStaffTest {
 	@Test
 	@Parameters (method = "getParametersForAssignStaffIntegrationTest")
 	public void assignStaffIntegrationTestValid(String staffId, String staffName, String staffTelNo) {
-		expectedStaff = new Staff(staffId, staffName, staffTelNo);
+		Staff expectedStaff = new Staff(staffId, staffName, staffTelNo);
 		
+		// Gives the specified staffId / staffName to console
 		actualDelivery = sut.addDelivery(deliveryList);
-		
+	
 		assertTrue(actualDelivery.getStaff().equals(expectedStaff));
 	}
 	
@@ -150,7 +103,6 @@ public class AssignStaffTest {
 	public void assignStaffIntegrationTestInvalid() {
 		// Gives invalid staff id or staff name to console
 		actualDelivery = sut.addDelivery(deliveryList);
-		
 		assertTrue(actualDelivery.getStaff() == null);
 	}
 	
@@ -159,21 +111,13 @@ public class AssignStaffTest {
 	// To check if the system assigns the staff according to the user input 
 	public Object[] getParametersForTestAssignStaffValid() {
 		return new Object[] {
-				new Object[] {"5", "Teoh Yin Shui", "+6015-428 7399"},
-				new Object[] {"6", "Haanii a/l Kishor Ramasamy", "+6018-053 4527"}
+			new Object[] {"5", "Teoh Yin Shui", "+6015-428 7399"},
+			new Object[] {"6", "Haanii a/l Kishor Ramasamy", "+6018-053 4527"}
 		};
 	}
 	
 	public Object[] parametersForTestAssignStaffInvalid() {
 		return new Object[] {"0", "-1", "6", "", "abc"};
-	}
-	
-	public Object[] parametersForTestAssignStaffInvalid2() {
-		return new Object[] {
-			new Object[] {null, NullPointerException.class}, 
-			new Object[] {1, Exception.class},
-			new Object[] {'1', Exception.class}
-		};
 	}
 	
 	public Object[] getParametersForAssignStaffIntegrationTest() {

@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 public class KeyboardInput {
 	
-	public static final Scanner scanner = new Scanner(System.in);
+	public static Scanner scanner = new Scanner(System.in);
 	private static final String stringError = "Sorry, cannot contain \"" + AbstractFile.getDELIMITER() + "\".";
 	private static final KeyboardInput instance = new KeyboardInput();
 	
