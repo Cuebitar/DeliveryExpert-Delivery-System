@@ -10,6 +10,7 @@ import java.util.Scanner;
 
 public class TransactionFile extends AbstractFile {
 
+	// need to call retrieveFile first to be able to read and write to file
 	private final static String FILENAME = "";
 
 	public TransactionFile() {

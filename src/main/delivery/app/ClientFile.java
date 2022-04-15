@@ -8,6 +8,7 @@ import java.util.Scanner;
 
 public class ClientFile extends AbstractFile {
 
+	// need to call retrieveFile first to be able to read and write to file
 	private final static String FILENAME = "";
 
 	public ClientFile() {
