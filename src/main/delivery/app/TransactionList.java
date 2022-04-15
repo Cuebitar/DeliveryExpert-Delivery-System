@@ -5,6 +5,17 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 public class TransactionList { // controller class for Delivery class
+	
+	KeyboardInput keyboardInput;
+	
+	public TransactionList() {
+		keyboardInput = KeyboardInput.getInstance();
+	}
+	
+	public TransactionList(KeyboardInput kb) {
+		keyboardInput = kb;
+	}
+	
 	public boolean searchDeliveryList(String name) {
 		// search delivery list by client's name and display the delivery details
 		TransactionFile transactionFile = new TransactionFile();
@@ -25,36 +36,40 @@ public class TransactionList { // controller class for Delivery class
 
 	public Delivery addDelivery(ArrayList<Delivery> deliveryList) {
 		// add a new delivery to list and print the delivery note (output text file)
-		String clientName = KeyboardInput.getInstance().askString("client's name or ID");
+		String clientName = keyboardInput.askString("client's name or ID");
 		Client client = Delivery.findClient(clientName);
 		if (client.getName() == null) {
 			System.out.println("No such client.");
 			return new Delivery();
 		}
-		String staffName = KeyboardInput.getInstance().askString("staff name or ID");
+		String staffName = keyboardInput.askString("staff name or ID");
+		System.out.println("testing: staffName: " + staffName);
 		Staff staff = Delivery.findStaff(staffName);
 		if (staff.getName() == null) {
 			System.out.println("No such staff.");
 			return new Delivery();
 		}
-		String receiverName = KeyboardInput.getInstance().askString("receiver name");
-		String receiverTelNo = KeyboardInput.getInstance().askString("receiver phone no.");
-		String pickUpLocation = KeyboardInput.getInstance().askString("pick up location");
-		String dropOffLocation = KeyboardInput.getInstance().askString("drop off location");
-		LocalDate date = KeyboardInput.getInstance().askDate("pick up date");
-		boolean sameDayDelivery = KeyboardInput.getInstance().askBoolean("Same day delivery");
-		boolean withInsurance = KeyboardInput.getInstance().askBoolean("Deliver with insurance");
-		int deliveryID = deliveryList.get(deliveryList.size() - 1).getDeliveryID() + 1;
-
+		String receiverName = keyboardInput.askString("receiver name");
+		String receiverTelNo = keyboardInput.askString("receiver phone no.");
+		String pickUpLocation = keyboardInput.askString("pick up location");
+		String dropOffLocation = keyboardInput.askString("drop off location");
+		LocalDate date = keyboardInput.askDate("pick up date");
+		boolean sameDayDelivery = keyboardInput.askBoolean("Same day delivery");
+		boolean withInsurance = keyboardInput.askBoolean("Deliver with insurance");
+		int deliveryID;
+		if (deliveryList.size() > 0)
+			deliveryID = deliveryList.get(deliveryList.size() - 1).getDeliveryID() + 1;
+		else
+			deliveryID = 1;
 		StringBuilder sb = new StringBuilder();
 		StringBuilder str = new StringBuilder();
 		String str1;
-		double distance = KeyboardInput.getInstance().askPositiveDouble("distance in km");
-		int numberOfItems = KeyboardInput.getInstance().askPositiveInt("number of items");
+		double distance = keyboardInput.askPositiveDouble("distance in km");
+		int numberOfItems = keyboardInput.askPositiveInt("number of items");
 		for (int i = 0; i < numberOfItems; i++) {
 			System.out.printf("\n\n-- Item %o --\n ", (i + 1));
-			double weight = KeyboardInput.getInstance().askPositiveDouble("weight in grams");
-			boolean document = KeyboardInput.getInstance().askBoolean("Item type: Document");
+			double weight = keyboardInput.askPositiveDouble("weight in grams");
+			boolean document = keyboardInput.askBoolean("Item type: Document");
 			if (document) {
 				str1 = String.format("%s %s %s ", "Document", weight, distance);
 			} else {

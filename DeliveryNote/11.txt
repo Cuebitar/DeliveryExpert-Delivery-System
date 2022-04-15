@@ -1,0 +1,30 @@
+          Delivery ID: 11
+
+  --- Client ---
+Client ID       : 1
+Client Name     : Lisa
+Client Phone No.: +6010-778 5641
+
+  --- Receiver ---
+Receiver Name     : 1
+Receiver Phone No.: 1
+
+  --- Staff ---
+Staff ID       : 1
+Staff Name     : Shawn
+Staff Phone No.: +019-321 9911
+
+  --- Delivery ---
+Same day delivery     : No
+Deliver with insurance: No
+Pick Up Location      : 1
+Drop Off Location     : 1
+Pick Up Date          : 02/05/2022
+
+  --- Items ---
+Item No | Weight (g) | Distance (km) | Charge (RM) | Item Type
+      1 |       1.00 |          1.00 |        5.00 |    Parcel
+
+
+
+Total Charge:                           RM    5.00

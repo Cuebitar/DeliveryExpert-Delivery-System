@@ -20,4 +20,8 @@ public class Staff extends Person {
 	public String toString() {
 		return String.format("%s;%s;%s", getId(), getName(), getTelNo());
 	}
+	
+	public boolean equals(Staff s) {
+		return id.equals(s.id)&& name.equals(s.name) && telNo.equals(s.telNo); 
+	}
 }

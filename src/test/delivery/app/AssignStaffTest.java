@@ -20,10 +20,9 @@ public class AssignStaffTest {
 	@Before
 	public void setUp() {
 		deliveryList = new ArrayList<Delivery>();
-		sut = new TransactionList();
 	}
 	
-	public void setUpMockedKeyboardInput(String staffNameOrId) {
+	public KeyboardInput getMockedKeyboardInput(String staffNameOrId) {
 		KeyboardInput mockedKeyboardInput = mock(KeyboardInput.class);
 		
 		when(mockedKeyboardInput.askString("client's name or ID")).thenReturn("1");
@@ -36,7 +35,11 @@ public class AssignStaffTest {
 		when(mockedKeyboardInput.askBoolean("Same day delivery")).thenReturn(false);
 		when(mockedKeyboardInput.askBoolean("Deliver with insurance")).thenReturn(false);
 		when(mockedKeyboardInput.askPositiveDouble("distance in km")).thenReturn(1.0);
-		when(mockedKeyboardInput.askPositiveInt("number of items")).thenReturn(0);
+		when(mockedKeyboardInput.askPositiveInt("number of items")).thenReturn(1);
+		when(mockedKeyboardInput.askPositiveDouble("weight in grams")).thenReturn(1.0);
+		when(mockedKeyboardInput.askBoolean("Item type: Document")).thenReturn(true);
+		
+		return mockedKeyboardInput;
 	}
 	
 	// ******************* *********** Unit Testing *************************************
@@ -44,28 +47,29 @@ public class AssignStaffTest {
 	// 1
 	@Test
 	@Parameters (method = "getParametersForTestAssignStaffValid")
-	public void testAssignStaffUsingStaffIdValid(String staffId, String expectedStaffName, String expectedStaffTelNo) {
+	public void testAssignStaffUsingStaffIdValid(String staffId, String expectedStaffName, String expectedStaffTelNo) {		
 		Staff expectedStaff = new Staff(staffId, expectedStaffName, expectedStaffTelNo);
-		setUpMockedKeyboardInput(staffId);
+		sut = new TransactionList(getMockedKeyboardInput(staffId));
 		actualDelivery = sut.addDelivery(deliveryList);
+		System.out.println(actualDelivery.getStaff().getName());
 		assertTrue(actualDelivery.getStaff().equals(expectedStaff));
 	}
 	
 	// 2
 	@Test
 	@Parameters (method = "getParametersForTestAssignStaffValid")
-	public void testAssignStaffUsingStaffNameValid(String staffId, String expectedStaffName, String expectedStaffTelNo) {
-		Staff expectedStaff = new Staff(staffId, expectedStaffName, expectedStaffTelNo);		
-		setUpMockedKeyboardInput(expectedStaffName);
+	public void testAssignStaffUsingStaffNameValid(String expectedStaffId, String staffName, String expectedStaffTelNo) {
+		Staff expectedStaff = new Staff(expectedStaffId, staffName, expectedStaffTelNo);		
+		sut = new TransactionList(getMockedKeyboardInput(staffName));
 		actualDelivery = sut.addDelivery(deliveryList);
 		assertTrue(actualDelivery.getStaff().equals(expectedStaff));
 	}
-	
+
 	// 3
 	@Test
 	@Parameters
 	public void testAssignStaffInvalid(String invalidInput) {
-		setUpMockedKeyboardInput(invalidInput);
+		sut = new TransactionList(getMockedKeyboardInput(invalidInput));
 		actualDelivery = sut.addDelivery(deliveryList);
 		assertTrue(actualDelivery.getStaff() == null);
 	}
@@ -73,18 +77,18 @@ public class AssignStaffTest {
 	// 4
 	@Test (expected = NullPointerException.class)
 	public void testAssignStaffInvalid2() {
-		setUpMockedKeyboardInput(null);
+		sut = new TransactionList(getMockedKeyboardInput(null));
 		actualDelivery = sut.addDelivery(deliveryList);
 	}
 	
 	// ********************************* Integration Testing *****************************
-	/*
+	
 	// 5
 	@Test
 	@Parameters (method = "getParametersForTestAssignStaffValid")
 	public void assignStaffIntegrationTestValid(String staffId, String staffName, String staffTelNo) {
 		Staff expectedStaff = new Staff(staffId, staffName, staffTelNo);
-		
+		sut = new TransactionList();
 		// Gives the specified staffId / staffName to console
 		actualDelivery = sut.addDelivery(deliveryList);
 	
@@ -95,10 +99,12 @@ public class AssignStaffTest {
 	@Test
 	public void assignStaffIntegrationTestInvalid() {
 		// Gives invalid staff id or staff name to console
+		sut = new TransactionList();
 		actualDelivery = sut.addDelivery(deliveryList);
 		assertTrue(actualDelivery.getStaff() == null);
+
 	}
-	*/
+	
 	// ******************************** Test Data ***************************************
 	
 	// To check if the system assigns the staff according to the user input 
@@ -110,6 +116,6 @@ public class AssignStaffTest {
 	}
 	
 	public Object[] parametersForTestAssignStaffInvalid() {
-		return new Object[] {"0", "-1", "6", "", "abc"};
+		return new Object[] {"0", "-1", "100", "", "abc"};
 	}
 }

@@ -168,6 +168,9 @@ public class Delivery {
 		staffFile.readFromFile("Staff.txt");
 		staffList = staffFile.getStaffList();
 
+		if (info.isBlank())
+			return new Staff();
+		
 		for (Staff value : staffList) {
 			if (value.getId().equals(info) || value.getName().toLowerCase().contains(info.toLowerCase())) {
 				return value;
@@ -235,5 +238,4 @@ public class Delivery {
 		}
 		totalCharge += additionalCharge;
 	}
-
 }

@@ -8,3 +8,4 @@
 8;4;Nurul Jaslina Jamaluddin;+6015-164 3413;4;false;true;9, Jalan Lt. Adnan 4/6, Seksyen 9, 70137 Gemas, Negeri Sembilan;6, Jalan Imbi 9M, SS9, 12631 Simpang Ampat, Pulau Pinang;24/04/2022;Parcel 2500.0 50.0 Parcel 5000.0 50.0 
 9;6;Santhara a/l Baltej;+605-613 5284;5;false;true;3M-88, Jalan Kia Peng 40I, Bandar Utama, 63702 Sungai Lembing, Pahang Darul Makmur;505, Lorong Kuala Kangsar, PJS49O, 10897 Balik Pulau, Pulau Pinang;07/04/2022;Parcel 5700.0 35.0 Document 300.0 35.0 Document 460.0 35.0 
 10;1;rose;0111111111;1;true;true;109 Jalan ss18/4;109 USJ1;12/04/2022;Document 20.0 10.0 
+11;1;1;1;1;false;false;1;1;02/05/2022;Parcel 1.0 1.0 

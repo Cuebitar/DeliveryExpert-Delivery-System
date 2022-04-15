@@ -2,8 +2,8 @@ package delivery.app;
 
 public class Person {
 
-    private String name;
-    private String telNo;
+    protected String name;
+    protected String telNo;
 
     public Person(String name, String telNo){
         this.name = name;
