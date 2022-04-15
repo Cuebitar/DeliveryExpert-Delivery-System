@@ -7,10 +7,9 @@ import java.util.Scanner;
 public class StaffFile extends AbstractFile {
 
 	// need to call retrieveFile first to be able to read and write to file
-	private final static String FILENAME = "";
 
 	public StaffFile() {
-		this.retrieveFile(FILENAME);
+
 	}
 
 	public void readStaffFile(ArrayList<Staff> staffList) {
