@@ -15,16 +15,19 @@ public class DeliveryApp {
 		// read Transaction.txt to an ArrayList
 		ArrayList<Delivery> deliveryList = new ArrayList<>();
 		TransactionFile transactionFile = new TransactionFile();
+		transactionFile.retrieveFile("Transaction.txt");
 		transactionFile.readTransactionFile(deliveryList);
 
 		// read Client.txt to an ArrayList
 		ArrayList<Client> clientList = new ArrayList<>();
 		ClientFile clientFile = new ClientFile();
+		clientFile.retrieveFile("Client.txt");
 		clientFile.readClientFile(clientList);
 
 		// read Staff.txt to an ArrayList
 		ArrayList<Staff> staffList = new ArrayList<>();
 		StaffFile staffFile = new StaffFile();
+		staffFile.retrieveFile("Staff.txt");
 		staffFile.readStaffFile(staffList);
 
 		// system main functions
