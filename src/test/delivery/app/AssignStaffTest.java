@@ -1,13 +1,9 @@
 package delivery.app;
 
-import static org.mockito.Matchers.anyInt;
-import static org.mockito.Matchers.anyString;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 import static org.junit.Assert.assertTrue;
-import org.junit.Assert;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import junitparams.JUnitParamsRunner;
@@ -52,7 +48,6 @@ public class AssignStaffTest {
 		Staff expectedStaff = new Staff(staffId, staffName, staffTelNo);
 		setUpMockedKeyboardInput(staffId);
 		actualDelivery = sut.addDelivery(deliveryList);
-		
 		assertTrue(actualDelivery.getStaff().equals(expectedStaff));
 	}
 	
@@ -63,7 +58,6 @@ public class AssignStaffTest {
 		Staff expectedStaff = new Staff(staffId, staffName, staffTelNo);		
 		setUpMockedKeyboardInput(staffName);
 		actualDelivery = sut.addDelivery(deliveryList);
-		
 		assertTrue(actualDelivery.getStaff().equals(expectedStaff));
 	}
 	
