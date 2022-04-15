@@ -8,10 +8,9 @@ import java.util.Scanner;
 
 public class ClientFile extends AbstractFile {
 
-	final static String FILENAME = "Client.txt";
+	// need to call retrieveFile first to be able to read and write to file
 
 	public ClientFile() {
-		this.retrieveFile(FILENAME);
 	}
 
 	public void readClientFile(ArrayList<Client> clientList) {

@@ -23,36 +23,36 @@ public class TransactionList { // controller class for Delivery class
 
 	public Delivery addDelivery(ArrayList<Delivery> deliveryList) {
 		// add a new delivery to list and print the delivery note (output text file)
-		String clientName = KeyboardInput.askString("client's name or ID");
+		String clientName = KeyboardInput.getInstance().askString("client's name or ID");
 		Client client = Delivery.findClient(clientName);
 		if (client.getName() == null) {
 			System.out.println("No such client.");
 			return new Delivery();
 		}
-		String staffName = KeyboardInput.askString("staff name or ID");
+		String staffName = KeyboardInput.getInstance().askString("staff name or ID");
 		Staff staff = Delivery.findStaff(staffName);
 		if (staff.getName() == null) {
 			System.out.println("No such staff.");
 			return new Delivery();
 		}
-		String receiverName = KeyboardInput.askString("receiver name");
-		String receiverTelNo = KeyboardInput.askString("receiver phone no.");
-		String pickUpLocation = KeyboardInput.askString("pick up location");
-		String dropOffLocation = KeyboardInput.askString("drop off location");
-		LocalDate date = KeyboardInput.askDate("pick up date");
-		boolean sameDayDelivery = KeyboardInput.askBoolean("Same day delivery");
-		boolean withInsurance = KeyboardInput.askBoolean("Deliver with insurance");
+		String receiverName = KeyboardInput.getInstance().askString("receiver name");
+		String receiverTelNo = KeyboardInput.getInstance().askString("receiver phone no.");
+		String pickUpLocation = KeyboardInput.getInstance().askString("pick up location");
+		String dropOffLocation = KeyboardInput.getInstance().askString("drop off location");
+		LocalDate date = KeyboardInput.getInstance().askDate("pick up date");
+		boolean sameDayDelivery = KeyboardInput.getInstance().askBoolean("Same day delivery");
+		boolean withInsurance = KeyboardInput.getInstance().askBoolean("Deliver with insurance");
 		int deliveryID = deliveryList.get(deliveryList.size() - 1).getDeliveryID() + 1;
 
 		StringBuilder sb = new StringBuilder();
 		StringBuilder str = new StringBuilder();
 		String str1;
-		double distance = KeyboardInput.askPositiveDouble("distance in km");
-		int numberOfItems = KeyboardInput.askPositiveInt("number of items");
+		double distance = KeyboardInput.getInstance().askPositiveDouble("distance in km");
+		int numberOfItems = KeyboardInput.getInstance().askPositiveInt("number of items");
 		for (int i = 0; i < numberOfItems; i++) {
 			System.out.printf("\n\n-- Item %o --\n ", (i + 1));
-			double weight = KeyboardInput.askPositiveDouble("weight in grams");
-			boolean document = KeyboardInput.askBoolean("Item type: Document");
+			double weight = KeyboardInput.getInstance().askPositiveDouble("weight in grams");
+			boolean document = KeyboardInput.getInstance().askBoolean("Item type: Document");
 			if (document) {
 				str1 = String.format("%s %s %s ", "Document", weight, distance);
 			} else {
@@ -74,8 +74,8 @@ public class TransactionList { // controller class for Delivery class
 		// search delivery list and cancel the delivery from the delivery list
 		boolean found = searchDeliveryList(deliveryList, name);
 		if (found) {
-			int deliveryID = KeyboardInput.askPositiveInt("the delivery ID to select");
-			boolean confirm = KeyboardInput.askBoolean("Confirm cancellation");
+			int deliveryID = KeyboardInput.getInstance().askPositiveInt("the delivery ID to select");
+			boolean confirm = KeyboardInput.getInstance().askBoolean("Confirm cancellation");
 			if (confirm) {
 				for (int i = 0; i < deliveryList.size(); i++) {
 					if (deliveryList.get(i).getDeliveryID() == deliveryID) {

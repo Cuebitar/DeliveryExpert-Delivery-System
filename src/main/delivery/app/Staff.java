@@ -20,5 +20,4 @@ public class Staff extends Person {
 	public String toString() {
 		return String.format("%s;%s;%s", getId(), getName(), getTelNo());
 	}
-
 }
