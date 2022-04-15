@@ -5,7 +5,6 @@ import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
 
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -16,15 +15,22 @@ import junitparams.Parameters;
 public class DisplayNoteTest {
 
 	@Test
-	@Parameters({ "Lisa" })
+	@Parameters({ "Lisa", "Rose" })
 	public void SearchDeliveryListValidTest(String inputData) {
 		TransactionList tList = new TransactionList();
 		assertTrue(tList.searchDeliveryList(inputData));
 	}
 
-	@Test
-	@Parameters({ "Esther", "Rose" })
+	@Test (expected = IllegalArgumentException.class)
+	@Parameters({ "Esther", " ", ""})
 	public void SearchDeliveryListInvalidTest(String inputData) {
+		TransactionList tList = new TransactionList();
+		tList.searchDeliveryList(inputData);
+	}
+	
+	@Test 
+	@Parameters({ "Esther"})
+	public void SearchDeliveryListInvalidTest2(String inputData) {
 		TransactionList tList = new TransactionList();
 		assertFalse(tList.searchDeliveryList(inputData));
 	}

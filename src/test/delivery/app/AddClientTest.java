@@ -38,8 +38,7 @@ public class AddClientTest {
 	private Object[] parametersForTestRetrieveFileInvalidValues() {
 		return new Object[] { 
 				new Object[] { ".txt" }, 
-				new Object[] { "" },
-				new Object[] { null }, 
+				new Object[] { "" }
 		};
 	}
 

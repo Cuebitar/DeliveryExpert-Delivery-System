@@ -18,6 +18,8 @@ public class TransactionList { // controller class for Delivery class
 	
 	public boolean searchDeliveryList(String name) {
 		// search delivery list by client's name and display the delivery details
+		if (name == null || name.isBlank())
+			throw new IllegalArgumentException();
 		TransactionFile transactionFile = new TransactionFile();
 		transactionFile.readFromFile("Transaction.txt");
 		ArrayList<Delivery> deliveryList = transactionFile.getDeliveryList();
