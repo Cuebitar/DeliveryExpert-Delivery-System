@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class StaffFile extends AbstractFile {
 
-	final static String FILENAME = "Staff.txt";
+	private final static String FILENAME = "";
 
 	public StaffFile() {
 		this.retrieveFile(FILENAME);

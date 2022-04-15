@@ -8,7 +8,7 @@ import java.util.Scanner;
 
 public class ClientFile extends AbstractFile {
 
-	final static String FILENAME = "Client.txt";
+	private final static String FILENAME = "";
 
 	public ClientFile() {
 		this.retrieveFile(FILENAME);

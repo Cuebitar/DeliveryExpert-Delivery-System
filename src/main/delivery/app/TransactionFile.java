@@ -10,7 +10,7 @@ import java.util.Scanner;
 
 public class TransactionFile extends AbstractFile {
 
-	final static String FILENAME = "Transaction.txt";
+	private final static String FILENAME = "";
 
 	public TransactionFile() {
 		this.retrieveFile(FILENAME);
