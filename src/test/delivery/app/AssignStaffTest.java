@@ -14,6 +14,7 @@ import org.junit.runner.RunWith;
 import junitparams.JUnitParamsRunner;
 import junitparams.Parameters;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 
@@ -41,14 +42,48 @@ public class AssignStaffTest {
 	@Test
 	@Parameters (method = "getParametersForTestAssignStaffValid")
 	public void testAssignStaffUsingStaffIdValid(String staffId, String staffName, String staffTelNo) {
-		MockedStatic mocked = mockStatic(Foo.class)) {
-			 mocked.when(Foo::method).thenReturn("bar")
 		
 		expectedStaff = new Staff(staffId, staffName, staffTelNo);
 		
 		mockKeyboardInput = mock(KeyboardInput.class);
 		when(mockKeyboardInput.getSalesAgentPosition(anyString())).thenReturn(currentPosition);
 		when(mockKeyboardInput.getSalesAmount(anyString())).thenReturn(salesAmount);
+		
+		String clientName = KeyboardInput.getInstance().askString("client's name or ID");
+		Client client = Delivery.findClient(clientName);
+		if (client.getName() == null) {
+			System.out.println("No such client.");
+			return new Delivery();
+		}
+		String staffName = KeyboardInput.getInstance().askString("staff name or ID");
+		Staff staff = Delivery.findStaff(staffName);
+		if (staff.getName() == null) {
+			System.out.println("No such staff.");
+			return new Delivery();
+		}
+		String receiverName = KeyboardInput.getInstance().askString("receiver name");
+		String receiverTelNo = KeyboardInput.getInstance().askString("receiver phone no.");
+		String pickUpLocation = KeyboardInput.getInstance().askString("pick up location");
+		String dropOffLocation = KeyboardInput.getInstance().askString("drop off location");
+		LocalDate date = KeyboardInput.getInstance().askDate("pick up date");
+		boolean sameDayDelivery = KeyboardInput.getInstance().askBoolean("Same day delivery");
+		boolean withInsurance = KeyboardInput.getInstance().askBoolean("Deliver with insurance");
+		int deliveryID = deliveryList.get(deliveryList.size() - 1).getDeliveryID() + 1;
+
+		StringBuilder sb = new StringBuilder();
+		StringBuilder str = new StringBuilder();
+		String str1;
+		double distance = KeyboardInput.getInstance().askPositiveDouble("distance in km");
+		int numberOfItems = KeyboardInput.getInstance().askPositiveInt("number of items");
+		for (int i = 0; i < numberOfItems; i++) {
+			System.out.printf("\n\n-- Item %o --\n ", (i + 1));
+			double weight = KeyboardInput.getInstance().askPositiveDouble("weight in grams");
+			boolean document = KeyboardInput.getInstance().askBoolean("Item type: Document");
+		
+		
+		
+		
+		
 		
 		
 		actualDelivery = sut.addDelivery(deliveryList);

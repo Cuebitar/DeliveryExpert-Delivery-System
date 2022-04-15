@@ -7,13 +7,13 @@ import java.util.Scanner;
 
 public class KeyboardInput {
 	
-	private static final Scanner sn = new Scanner(System.in);
+	public static final Scanner scanner = new Scanner(System.in);
 	private static final String stringError = "Sorry, cannot contain \"" + AbstractFile.getDELIMITER() + "\".";
 	private static final KeyboardInput instance = new KeyboardInput();
 	
 	private KeyboardInput() {}
 	
-	public KeyboardInput getInstance() {
+	public static KeyboardInput getInstance() {
 		return instance;
 	}
 	
@@ -22,7 +22,7 @@ public class KeyboardInput {
 
 		while (true) {
 			System.out.printf("%nEnter %s: ", info);
-			input = sn.nextLine();
+			input = scanner.nextLine();
 			if (input.contains(AbstractFile.getDELIMITER())) {
 				System.out.printf("%s%n", stringError);
 			} else if (input.equals("")) {
@@ -41,7 +41,7 @@ public class KeyboardInput {
 		while (true) {
 			System.out.printf("%nEnter %s: ", info);
 			try {
-				input = Double.parseDouble(sn.nextLine());
+				input = Double.parseDouble(scanner.nextLine());
 				if (input <= 0) {
 					System.out.println(errorMessage);
 				} else {
@@ -60,7 +60,7 @@ public class KeyboardInput {
 		while (true) {
 			System.out.printf("%nEnter %s: ", info);
 			try {
-				input = Integer.parseInt(sn.nextLine());
+				input = Integer.parseInt(scanner.nextLine());
 				if (input < 1) {
 					System.out.println(errorMessage);
 				} else {
@@ -76,7 +76,7 @@ public class KeyboardInput {
 		String ans;
 		while (true) {
 			System.out.printf("%n%n%s%s", info, " (y/n)? ");
-			ans = sn.nextLine().toLowerCase();
+			ans = scanner.nextLine().toLowerCase();
 
 			if (ans.equalsIgnoreCase("y") || ans.equalsIgnoreCase("yes")) {
 				return true;
@@ -96,7 +96,7 @@ public class KeyboardInput {
 			System.out.print("\nEnter " + dateName + " in \"dd/mm/yyyy\" format: ");
 			try {
 				LocalDate today = LocalDate.now();
-				stringDate = sn.nextLine();
+				stringDate = scanner.nextLine();
 				date = LocalDate.parse(stringDate, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
 				if (date.isBefore(today)) {
 					System.out.printf("%n%s%n", "Sorry, please enter a future date.");
@@ -109,4 +109,31 @@ public class KeyboardInput {
 		}
 	}
 	
+
+	// let user chose which eventNo he/she wants to perform
+	public static int askEventNo(int beginEventNo, int endEventNo) {
+		if (beginEventNo > endEventNo) {
+			System.out.printf("%nBug at UI.askEventNo(int, int): the beginEventNo should not greater than the endEventNo.");
+			System.exit(1);
+		}
+
+		int eventNo;
+		final String errorMessage = "Sorry, input failed. Please enter the number of option you want to perform.\n";
+
+		while (true) {
+			try {
+				System.out.printf("%nPlease select> ");
+				eventNo = Integer.parseInt(scanner.nextLine());
+
+				if (eventNo >= beginEventNo && eventNo <= endEventNo) {
+					break;
+				} else {
+					System.out.print(errorMessage);
+				}
+			} catch (NumberFormatException e) {
+				System.out.print(errorMessage);
+			}
+		}
+		return eventNo;
+	}
 }

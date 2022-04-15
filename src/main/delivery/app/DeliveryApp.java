@@ -32,11 +32,11 @@ public class DeliveryApp {
 			UI.displayHeading("DeliveryExpert");
 			UI.displayMainMenu();
 
-			eventNo = UI.askEventNo(startingEventNo, closingEventNo);
+			eventNo = KeyboardInput.askEventNo(startingEventNo, closingEventNo);
 			switch (eventNo) {
 			case 1:
 				// search delivery list by client's name and display the delivery details
-				String name = KeyboardInput.askString("client's name");
+				String name = KeyboardInput.getInstance().askString("client's name");
 				transactions.searchDeliveryList(deliveryList, name);
 				break;
 			case 2:
@@ -50,7 +50,7 @@ public class DeliveryApp {
 				break;
 			case 3:
 				// search delivery list and cancel the delivery from the delivery list
-            	String name1 = KeyboardInput.askString("client's name");
+            	String name1 = KeyboardInput.getInstance().askString("client's name");
                 int toBeCancel = transactions.cancelDelivery(deliveryList, name1);
 				if (toBeCancel != 0) {
 					transactionFile.writeTransactionFile(deliveryList);
@@ -78,8 +78,8 @@ public class DeliveryApp {
 		double weight, distance;
 
 		// to ask weight and distance
-		weight = KeyboardInput.askPositiveDouble("weight in grams");
-		distance = KeyboardInput.askPositiveDouble("distance in km");
+		weight = KeyboardInput.getInstance().askPositiveDouble("weight in grams");
+		distance = KeyboardInput.getInstance().askPositiveDouble("distance in km");
 
 		// to display the calculated delivery charges
 		Item document = new Document(weight, distance);
@@ -93,8 +93,8 @@ public class DeliveryApp {
 		int id;
 
 		// to ask client's information
-		name = KeyboardInput.askString("new client's name");
-		telNo = KeyboardInput.askString("phone number");
+		name = KeyboardInput.getInstance().askString("new client's name");
+		telNo = KeyboardInput.getInstance().askString("phone number");
 		id = Integer.parseInt(clientList.get(clientList.size() - 1).getId()) + 1;
 		Client client = new Client(String.valueOf(id), name, telNo);
 		clientList.add(client);
