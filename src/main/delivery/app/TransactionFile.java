@@ -51,7 +51,6 @@ public class TransactionFile extends AbstractFile {
             }
             sc.close();
         }
-        System.out.println(deliveryList.size());
     }
 
     @Override

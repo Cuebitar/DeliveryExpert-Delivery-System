@@ -40,4 +40,19 @@ public class DisplayNoteTest {
 		assertFalse(tList.searchDeliveryList(deliveryTestList, inputData));
 	}
 
+
+
+//	@Test
+//	@Parameters({ "Lisa" })
+//	public void SearchDeliveryListValidTest(String inputData) {
+//		TransactionList tList = new TransactionList();
+//		assertTrue(tList.searchDeliveryList(inputData));
+//	}
+//
+//	@Test
+//	@Parameters({ "Esther", "Rose" })
+//	public void SearchDeliveryListInvalidTest(String inputData) {
+//		TransactionList tList = new TransactionList();
+//		assertFalse(tList.searchDeliveryList(inputData));
+//	}
 }
