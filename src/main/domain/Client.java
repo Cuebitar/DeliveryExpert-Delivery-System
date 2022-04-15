@@ -1,4 +1,4 @@
-package delivery.app;
+package domain;
 
 public class Client extends Person {
 

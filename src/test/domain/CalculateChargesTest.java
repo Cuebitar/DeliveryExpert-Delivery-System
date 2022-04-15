@@ -1,10 +1,13 @@
-package delivery.app;
+package domain;
 
 import junitparams.JUnitParamsRunner;
 import junitparams.Parameters;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
+
+import domain.Document;
+import domain.Parcel;
 
 import static org.junit.Assert.assertEquals;
 

@@ -1,10 +1,12 @@
-package delivery.app;
+package dataAccess;
 
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
+
+import domain.Client;
 
 public class ClientFile extends AbstractFile {
 
